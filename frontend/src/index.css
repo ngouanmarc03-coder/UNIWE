@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --font-display: "Inter", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  --color-ink: #16130f;
+  --color-ink-light: #221d17;
+  --color-sand: #faf6ef;
+  --color-sand-dark: #f0e8d9;
+  --color-accent: #c9793f;
+  --color-accent-light: #e0a06b;
+  --color-gold: #b98a3e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-sand);
+  color: var(--color-ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.leaflet-container {
+  font-family: var(--font-sans);
+}
+
+.input {
+  width: 100%;
+  border-radius: 0;
+  background-color: color-mix(in srgb, var(--color-ink) 4%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: var(--color-accent);
+}
