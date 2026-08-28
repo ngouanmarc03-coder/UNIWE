@@ -19,7 +19,27 @@ import faqController from "./controllers/faqController.js";
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = (process.env.CLIENT_URL || "")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      // Requêtes sans origine (curl, apps mobiles, Postman) toujours autorisées.
+      if (!origin) return callback(null, true);
+      // Si aucune URL client n'est configurée, on n'impose aucune restriction.
+      if (allowedOrigins.length === 0) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      // Toujours autoriser le développement local et sur le réseau local (mobile).
+      if (/^https?:\/\/(localhost|127\.0\.0\.1|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)(:\d+)?$/.test(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Origine non autorisée par CORS"));
+    },
+  })
+);
 app.use(express.json());
 
 app.get("/api/health", (req, res) => res.json({ ok: true }));
