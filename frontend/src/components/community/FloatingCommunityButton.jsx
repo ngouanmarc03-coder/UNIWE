@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
 import api from "../../api/client";
 import CommunityModal from "./CommunityModal.jsx";
+import WhatsAppIcon from "../icons/WhatsAppIcon.jsx";
 
 export default function FloatingCommunityButton() {
   const [link, setLink] = useState("");
@@ -40,8 +40,8 @@ export default function FloatingCommunityButton() {
         aria-label="Rejoindre la communauté"
         className="fixed bottom-6 right-6 z-40 pointer-events-auto flex items-center gap-2.5 rounded-full bg-sand text-ink pl-4 pr-5 py-3 shadow-[0_6px_20px_rgba(0,0,0,0.18)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.24)] hover:scale-[1.03] active:scale-[0.97] transition-all cursor-grab active:cursor-grabbing select-none"
       >
-        <MessageCircle size={19} className="text-accent" />
-        <span className="text-sm font-medium whitespace-nowrap">Besoin d'aide ?</span>
+        <WhatsAppIcon size={18} className="text-accent" />
+        <span className="text-sm font-medium whitespace-nowrap">Communauté</span>
       </motion.button>
 
       <CommunityModal open={open} onClose={() => setOpen(false)} whatsappCommunityLink={link} />

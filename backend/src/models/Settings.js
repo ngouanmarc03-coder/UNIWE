@@ -13,6 +13,7 @@ const settingsSchema = new mongoose.Schema(
       facebook: { type: String, default: "" },
       instagram: { type: String, default: "" },
       linkedin: { type: String, default: "" },
+      tiktok: { type: String, default: "" },
     },
     legalTexts: {
       mentionsLegales: { type: String, default: "" },

@@ -1,18 +1,28 @@
-import { MessageCircle } from "lucide-react";
 import Reveal from "./Reveal.jsx";
+import WhatsAppIcon from "../icons/WhatsAppIcon.jsx";
+
+const BG_IMAGE =
+  "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1600";
 
 export default function WhatsAppCommunityBanner({ link }) {
   if (!link) return null;
 
   return (
     <section className="px-5 md:px-10 py-16">
-      <Reveal className="max-w-7xl mx-auto rounded-none bg-accent/10 border border-accent/20 px-8 md:px-14 py-12 flex flex-col md:flex-row items-center justify-between gap-8">
-        <div className="text-center md:text-left">
-          <p className="uppercase tracking-[0.25em] text-accent text-xs mb-3">Communauté</p>
-          <h3 className="font-display text-2xl md:text-3xl max-w-xl">
+      <Reveal className="relative max-w-7xl mx-auto rounded-none overflow-hidden px-8 md:px-14 py-16 flex flex-col md:flex-row items-center justify-between gap-8">
+        <img
+          src={BG_IMAGE}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-accent/85" />
+
+        <div className="relative text-center md:text-left">
+          <p className="uppercase tracking-[0.25em] text-sand/80 text-xs mb-3">Communauté</p>
+          <h3 className="font-display text-2xl md:text-4xl text-sand max-w-xl">
             Rejoignez la communauté WhatsApp UNIWÊ
           </h3>
-          <p className="mt-3 text-ink/60 max-w-xl text-sm">
+          <p className="mt-3 text-sand/80 max-w-xl text-sm">
             Actualités, conseils et échanges directs avec l'équipe et les autres clients.
           </p>
         </div>
@@ -20,9 +30,9 @@ export default function WhatsAppCommunityBanner({ link }) {
           href={link}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-2 rounded-none bg-ink text-sand px-7 py-4 text-sm font-medium hover:bg-accent hover:scale-[1.03] active:scale-[0.97] transition-all whitespace-nowrap"
+          className="relative flex items-center gap-2 rounded-full bg-ink text-sand px-7 py-4 text-sm font-medium hover:bg-white hover:text-ink hover:scale-[1.03] active:scale-[0.97] transition-all whitespace-nowrap"
         >
-          <MessageCircle size={18} /> Rejoindre le groupe
+          <WhatsAppIcon size={17} /> Rejoindre le groupe
         </a>
       </Reveal>
     </section>

@@ -9,13 +9,13 @@
   --font-display: "Inter", sans-serif;
   --font-sans: "Inter", sans-serif;
 
-  --color-ink: #16130f;
-  --color-ink-light: #221d17;
+  --color-ink: #0d1321;
+  --color-ink-light: #17223a;
   --color-sand: #faf6ef;
   --color-sand-dark: #f0e8d9;
-  --color-accent: #c9793f;
-  --color-accent-light: #e0a06b;
-  --color-gold: #b98a3e;
+  --color-accent: #2e86de;
+  --color-accent-light: #7fb8f0;
+  --color-gold: #5cb85c;
 }
 
 html {
@@ -52,4 +52,19 @@ body {
 
 .input:focus {
   border-color: var(--color-accent);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
 }

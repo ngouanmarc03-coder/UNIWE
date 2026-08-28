@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { MessageCircle, Users, Bell, HandHeart, X } from "lucide-react";
+import { Users, Bell, HandHeart, X } from "lucide-react";
+import WhatsAppIcon from "../icons/WhatsAppIcon.jsx";
 
 const POINTS = [
   { icon: Bell, label: "Actualités" },
@@ -46,9 +47,9 @@ export default function CommunityModal({ open, onClose, whatsappCommunityLink })
                 href={whatsappCommunityLink}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 w-full rounded-none bg-ink text-sand hover:bg-accent hover:scale-[1.03] active:scale-[0.97] transition-all px-6 py-4 text-sm font-medium"
+                className="flex items-center justify-center gap-2 w-full rounded-full bg-ink text-sand hover:bg-accent hover:scale-[1.03] active:scale-[0.97] transition-all px-6 py-4 text-sm font-medium"
               >
-                <MessageCircle size={18} /> Rejoindre le groupe WhatsApp
+                <WhatsAppIcon size={17} /> Rejoindre le groupe WhatsApp
               </a>
             ) : (
               <p className="text-sm text-ink/40 text-center border border-ink/10 rounded-none py-4">

@@ -48,17 +48,10 @@ export default function HowItWorks() {
           <ArrowLeft size={16} /> Retour au site
         </Link>
 
-        <div className="space-y-16">
+        <div className="space-y-12">
           {posts.map((post, i) => (
             <Reveal key={post._id} delay={i * 0.1}>
-              <div>
-                {post.imageUrl && (
-                  <img
-                    src={post.imageUrl}
-                    alt={post.title}
-                    className="w-full h-56 md:h-72 object-cover mb-6"
-                  />
-                )}
+              <div className="border-b border-ink/10 pb-12 last:border-0 last:pb-0">
                 <h2 className="font-display text-2xl mb-3">{post.title}</h2>
                 <p className="text-ink/60 leading-relaxed whitespace-pre-line">{post.body}</p>
               </div>
@@ -72,7 +65,7 @@ export default function HowItWorks() {
         <div className="mt-16 text-center">
           <Link
             to="/devis"
-            className="inline-block rounded-none bg-ink text-sand hover:bg-accent hover:scale-[1.03] active:scale-[0.97] transition-all px-8 py-4 text-sm font-medium tracking-wide"
+            className="inline-block rounded-full bg-ink text-sand hover:bg-accent hover:scale-[1.03] active:scale-[0.97] transition-all px-8 py-4 text-sm font-medium tracking-wide"
           >
             Demander un devis
           </Link>

@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
-import { Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
+import TikTokIcon from "../icons/TikTokIcon.jsx";
+import WhatsAppIcon from "../icons/WhatsAppIcon.jsx";
 
 const CLICKS_NEEDED = 5;
 const WINDOW_MS = 3000;
@@ -8,6 +10,7 @@ const WINDOW_MS = 3000;
 export default function Footer({ settings, sponsors = [] }) {
   const navigate = useNavigate();
   const clicksRef = useRef([]);
+  const siteName = settings?.siteName || "UNIWÊ";
 
   function handleSecretClick() {
     const now = Date.now();
@@ -19,9 +22,16 @@ export default function Footer({ settings, sponsors = [] }) {
   }
 
   return (
-    <footer className="bg-ink text-sand/80">
+    <footer className="relative bg-ink text-sand/80 overflow-hidden">
+      <p
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute -top-10 left-1/2 -translate-x-1/2 font-display text-[16rem] md:text-[24rem] text-sand/[0.03] whitespace-nowrap leading-none"
+      >
+        {siteName}
+      </p>
+
       {sponsors.length > 0 && (
-        <div className="border-b border-sand/10">
+        <div className="relative border-b border-sand/10">
           <div className="max-w-7xl mx-auto px-5 md:px-10 py-10">
             <p className="text-center text-xs tracking-[0.2em] uppercase text-sand/50 mb-6">
               Ils nous font confiance
@@ -43,26 +53,66 @@ export default function Footer({ settings, sponsors = [] }) {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-5 md:px-10 py-14 grid gap-10 md:grid-cols-4">
+      <div className="relative max-w-7xl mx-auto px-5 md:px-10 py-14 grid gap-10 md:grid-cols-4">
         <div>
-          <p className="font-display text-2xl text-sand mb-3">{settings?.siteName || "UNIWÊ"}</p>
+          <p className="font-display text-2xl text-sand mb-3">{siteName}</p>
           <p className="text-sm text-sand/60 leading-relaxed">
             {settings?.tagline || "Import-export entre l'Afrique et l'Europe"}
           </p>
-          <div className="flex gap-4 mt-5">
+          <div className="flex gap-2.5 mt-5">
             {settings?.socialLinks?.facebook && (
-              <a href={settings.socialLinks.facebook} target="_blank" rel="noreferrer">
-                <Facebook size={18} />
+              <a
+                href={settings.socialLinks.facebook}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="flex items-center justify-center h-8 w-8 rounded-full border border-sand/15 text-sand/70 hover:text-accent-light hover:border-accent-light transition-colors"
+              >
+                <Facebook size={15} />
               </a>
             )}
             {settings?.socialLinks?.instagram && (
-              <a href={settings.socialLinks.instagram} target="_blank" rel="noreferrer">
-                <Instagram size={18} />
+              <a
+                href={settings.socialLinks.instagram}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="flex items-center justify-center h-8 w-8 rounded-full border border-sand/15 text-sand/70 hover:text-accent-light hover:border-accent-light transition-colors"
+              >
+                <Instagram size={15} />
+              </a>
+            )}
+            {settings?.socialLinks?.tiktok && (
+              <a
+                href={settings.socialLinks.tiktok}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="TikTok"
+                className="flex items-center justify-center h-8 w-8 rounded-full border border-sand/15 text-sand/70 hover:text-accent-light hover:border-accent-light transition-colors"
+              >
+                <TikTokIcon size={14} />
               </a>
             )}
             {settings?.socialLinks?.linkedin && (
-              <a href={settings.socialLinks.linkedin} target="_blank" rel="noreferrer">
-                <Linkedin size={18} />
+              <a
+                href={settings.socialLinks.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="flex items-center justify-center h-8 w-8 rounded-full border border-sand/15 text-sand/70 hover:text-accent-light hover:border-accent-light transition-colors"
+              >
+                <Linkedin size={15} />
+              </a>
+            )}
+            {settings?.whatsappAdminNumber && (
+              <a
+                href={`https://wa.me/${settings.whatsappAdminNumber.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="WhatsApp"
+                className="flex items-center justify-center h-8 w-8 rounded-full border border-sand/15 text-sand/70 hover:text-accent-light hover:border-accent-light transition-colors"
+              >
+                <WhatsAppIcon size={14} />
               </a>
             )}
           </div>
@@ -85,7 +135,7 @@ export default function Footer({ settings, sponsors = [] }) {
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-sm text-sand/70 hover:text-accent"
             >
-              <MessageCircle size={16} /> Rejoindre le groupe WhatsApp
+              <WhatsAppIcon size={15} /> Rejoindre le groupe WhatsApp
             </a>
           ) : (
             <p className="text-sm text-sand/40">Bientôt disponible</p>
@@ -114,9 +164,26 @@ export default function Footer({ settings, sponsors = [] }) {
         </div>
       </div>
 
-      <div className="border-t border-sand/10 py-6 px-5 md:px-10 flex items-center justify-center gap-2">
+      <div className="relative border-t border-sand/10 py-8 overflow-hidden">
+        <div className="marquee-track">
+          {[0, 1].map((rep) => (
+            <div key={rep} className="flex items-center shrink-0">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <span key={i} className="flex items-center shrink-0">
+                  <span className="font-display text-4xl md:text-6xl text-sand px-6">
+                    {siteName}
+                  </span>
+                  <span className="h-2 w-2 rounded-full bg-accent shrink-0" />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="relative border-t border-sand/10 py-6 px-5 md:px-10 flex items-center justify-center gap-2">
         <p className="text-xs text-sand/40">
-          © {new Date().getFullYear()} {settings?.siteName || "UNIWÊ"}. Tous droits réservés.
+          © {new Date().getFullYear()} {siteName}. Tous droits réservés.
         </p>
         <button
           onClick={handleSecretClick}

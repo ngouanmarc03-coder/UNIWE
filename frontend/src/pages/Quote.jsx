@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Globe, MessageCircle, Clock } from "lucide-react";
+import { ArrowLeft, Globe, Clock } from "lucide-react";
 import api from "../api/client";
 import Navbar from "../components/layout/Navbar.jsx";
 import Footer from "../components/layout/Footer.jsx";
 import Reveal from "../components/home/Reveal.jsx";
+import InfoBanner from "../components/home/InfoBanner.jsx";
 import QuoteForm from "../components/quote/QuoteForm.jsx";
+import WhatsAppIcon from "../components/icons/WhatsAppIcon.jsx";
 
 const POINTS = [
   {
@@ -19,7 +21,7 @@ const POINTS = [
     text: "Votre demande arrive directement dans notre espace de gestion.",
   },
   {
-    icon: MessageCircle,
+    icon: WhatsAppIcon,
     title: "Envoi via WhatsApp",
     text: "Préférez échanger tout de suite ? Envoyez votre demande directement par WhatsApp.",
   },
@@ -38,7 +40,7 @@ export default function Quote() {
     <div className="min-h-screen flex flex-col">
       <Navbar logoUrl={settings?.logoUrl} siteName={settings?.siteName} />
 
-      <main className="flex-1 max-w-5xl mx-auto px-5 md:px-10 pt-16 pb-24 w-full">
+      <main className="flex-1 max-w-5xl mx-auto px-5 md:px-10 pt-28 md:pt-32 pb-24 w-full">
         <Link to="/" className="inline-flex items-center gap-2 text-sm text-ink/50 hover:text-accent mb-8">
           <ArrowLeft size={16} /> Retour au site
         </Link>
@@ -63,6 +65,13 @@ export default function Quote() {
               <p className="text-sm text-ink/60 leading-relaxed">{p.text}</p>
             </div>
           ))}
+        </Reveal>
+
+        <Reveal delay={0.12} className="mb-8">
+          <InfoBanner>
+            Aucun tarif n'est affiché en ligne : chaque devis est calculé selon le poids, le volume
+            et la destination de votre envoi.
+          </InfoBanner>
         </Reveal>
 
         <Reveal delay={0.15} className="bg-white/70 border border-ink/5 p-6 md:p-12">

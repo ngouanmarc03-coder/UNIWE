@@ -136,7 +136,7 @@ export default function Settings() {
             </Field>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <Field label="Facebook">
               <input
                 value={settings.socialLinks?.facebook || ""}
@@ -151,6 +151,13 @@ export default function Settings() {
                 className="input"
               />
             </Field>
+            <Field label="TikTok">
+              <input
+                value={settings.socialLinks?.tiktok || ""}
+                onChange={(e) => updateNested(["socialLinks", "tiktok"], e.target.value)}
+                className="input"
+              />
+            </Field>
             <Field label="LinkedIn">
               <input
                 value={settings.socialLinks?.linkedin || ""}
@@ -159,6 +166,10 @@ export default function Settings() {
               />
             </Field>
           </div>
+          <p className="text-xs text-ink/40">
+            L'icône WhatsApp du pied de page utilise automatiquement le numéro WhatsApp renseigné
+            plus haut — pas besoin de champ supplémentaire.
+          </p>
 
           <hr className="border-ink/10" />
           <div className="flex items-center justify-between">

@@ -17,7 +17,7 @@ export default function LegalPageLayout({ title, textKey }) {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar logoUrl={settings?.logoUrl} siteName={settings?.siteName} />
-      <main className="flex-1 max-w-3xl mx-auto px-5 md:px-10 pt-16 pb-24 w-full">
+      <main className="flex-1 max-w-3xl mx-auto px-5 md:px-10 pt-28 md:pt-32 pb-24 w-full">
         <Link to="/" className="inline-flex items-center gap-2 text-sm text-ink/50 hover:text-accent mb-8">
           <ArrowLeft size={16} /> Retour au site
         </Link>

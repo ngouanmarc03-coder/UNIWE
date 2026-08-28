@@ -45,8 +45,12 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Navbar logoUrl={data.settings?.logoUrl} siteName={data.settings?.siteName} />
-      <HeroCarousel slides={data.heroes} onQuoteClick={() => navigate("/devis")} />
-      <StatsBand stats={data.settings?.stats} />
+      <HeroCarousel
+        slides={data.heroes}
+        stats={data.settings?.stats}
+        onQuoteClick={() => navigate("/devis")}
+      />
+      <StatsBand stats={data.settings?.stats} className="md:hidden" />
       <AboutSection />
       <StepsTimeline />
       <HowItWorksTeaser posts={data.posts} />

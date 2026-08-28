@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, MessageCircle, X } from "lucide-react";
+import { Globe, X } from "lucide-react";
+import WhatsAppIcon from "../icons/WhatsAppIcon.jsx";
 
 export default function ChannelChoiceDialog({ open, onClose, onChooseSite, onChooseWhatsapp, sending }) {
   return (
@@ -50,7 +51,7 @@ export default function ChannelChoiceDialog({ open, onClose, onChooseSite, onCho
                 onClick={onChooseWhatsapp}
                 className="w-full flex items-center gap-4 rounded-none border border-ink/10 hover:border-accent px-5 py-4 text-left transition-colors disabled:opacity-60"
               >
-                <MessageCircle className="text-accent" size={22} />
+                <WhatsAppIcon className="text-accent" size={21} />
                 <div>
                   <p className="font-medium text-sm">Via WhatsApp</p>
                   <p className="text-xs text-ink/50">Ouvre WhatsApp avec votre demande pré-remplie</p>

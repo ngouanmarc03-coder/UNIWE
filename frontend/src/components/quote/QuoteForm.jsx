@@ -172,7 +172,7 @@ export default function QuoteForm({ whatsappAdminNumber }) {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="inline-flex items-center gap-2 border border-ink/15 hover:border-accent transition-colors px-4 py-2.5 text-sm w-full justify-center"
+                className="inline-flex items-center gap-2 rounded-none border border-ink/15 hover:border-accent transition-colors px-4 py-2.5 text-sm w-full justify-center"
               >
                 <Camera size={16} /> Ajouter une photo
               </button>
@@ -228,7 +228,7 @@ export default function QuoteForm({ whatsappAdminNumber }) {
 
         <button
           type="submit"
-          className="rounded-none bg-ink text-sand hover:bg-accent hover:scale-[1.03] active:scale-[0.97] transition-all px-8 py-4 text-sm font-medium tracking-wide"
+          className="rounded-full bg-ink text-sand hover:bg-accent hover:scale-[1.03] active:scale-[0.97] transition-all px-8 py-4 text-sm font-medium tracking-wide"
         >
           Envoyer ma demande
         </button>

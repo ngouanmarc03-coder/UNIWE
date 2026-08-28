@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Trash2, Globe, MessageCircle } from "lucide-react";
+import { Trash2, Globe } from "lucide-react";
 import api from "../../api/client";
+import WhatsAppIcon from "../../components/icons/WhatsAppIcon.jsx";
 
 const STATUS_LABELS = { nouveau: "Nouveau", traite: "Traité", archive: "Archivé" };
 
@@ -50,7 +51,7 @@ export default function Quotes() {
               <div>
                 <div className="flex items-center gap-2">
                   {q.channel === "whatsapp" ? (
-                    <MessageCircle size={16} className="text-accent" />
+                    <WhatsAppIcon size={15} className="text-accent" />
                   ) : (
                     <Globe size={16} className="text-accent" />
                   )}
