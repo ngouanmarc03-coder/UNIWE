@@ -181,7 +181,7 @@ export default function Footer({ settings, sponsors = [] }) {
         </div>
       </div>
 
-      <div className="relative border-t border-sand/10 py-6 px-5 md:px-10 flex items-center justify-center gap-2">
+      <div className="relative border-t border-sand/10 py-6 px-5 md:px-10 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
         <p className="text-xs text-sand/40">
           © {new Date().getFullYear()} {siteName}. Tous droits réservés.
         </p>
@@ -193,6 +193,17 @@ export default function Footer({ settings, sponsors = [] }) {
         >
           ·
         </button>
+        <p className="text-xs text-sand/40">
+          — Créateur :{" "}
+          <a
+            href="https://marcngouan.netlify.app/portfolio"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sand/60 hover:text-accent-light transition-colors"
+          >
+            Ngouan Marc
+          </a>
+        </p>
       </div>
     </footer>
   );
