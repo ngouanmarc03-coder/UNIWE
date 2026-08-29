@@ -30,7 +30,7 @@ export default function AboutSection() {
         <p className="mt-6 text-ink/70 max-w-2xl leading-relaxed">
           UNIWÊ est une entreprise d'import-export qui facilite les échanges de marchandises entre
           la Côte d'Ivoire et la France. Notre équipe met tout en œuvre pour rendre chaque envoi
-          simple, transparent et fiable — que vous soyez une entreprise ou un particulier.
+          simple, transparent et fiable, que vous soyez une entreprise ou un particulier.
         </p>
       </Reveal>
 
