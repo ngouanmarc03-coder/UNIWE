@@ -15,7 +15,7 @@ export default function WhatsAppCommunityBanner({ link }) {
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-accent/85" />
+        <div className="absolute inset-0 bg-ink/90" />
 
         <div className="relative text-center md:text-left">
           <p className="uppercase tracking-[0.25em] text-sand/80 text-xs mb-3">Communauté</p>
@@ -30,9 +30,9 @@ export default function WhatsAppCommunityBanner({ link }) {
           href={link}
           target="_blank"
           rel="noreferrer"
-          className="relative flex items-center gap-2 rounded-full bg-ink text-sand px-7 py-4 text-sm font-medium hover:bg-white hover:text-ink hover:scale-[1.03] active:scale-[0.97] transition-all whitespace-nowrap"
+          className="relative flex items-center gap-2 rounded-full bg-sand text-ink px-7 py-4 text-sm font-medium hover:bg-white hover:scale-[1.03] active:scale-[0.97] transition-all whitespace-nowrap"
         >
-          <WhatsAppIcon size={17} /> Rejoindre le groupe
+          <WhatsAppIcon size={17} className="text-[#25D366]" /> Rejoindre le groupe
         </a>
       </Reveal>
     </section>

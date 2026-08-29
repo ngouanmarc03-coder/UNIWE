@@ -17,7 +17,7 @@ export default function Navbar({ logoUrl, siteName }) {
   return (
     <header className="fixed top-0 inset-x-0 z-50 px-3 pt-3 md:px-5 md:pt-4">
       <div
-        className={`max-w-6xl mx-auto bg-ink/85 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all ${
+        className={`max-w-6xl mx-auto bg-accent/30 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all ${
           open ? "rounded-3xl" : "rounded-full"
         }`}
       >

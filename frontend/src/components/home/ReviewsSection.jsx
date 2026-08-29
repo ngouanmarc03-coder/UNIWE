@@ -11,7 +11,7 @@ export default function ReviewsSection({ reviews = [], onSubmitted }) {
   const hasReviews = reviews.length > 0;
 
   return (
-    <section id="avis" className="relative bg-ink text-sand py-16 md:py-32 overflow-hidden">
+    <section id="avis" className="relative bg-ink text-sand py-10 md:py-32 overflow-hidden">
       <img src={BG_IMAGE} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-ink/90" />
       <div className="relative max-w-7xl mx-auto px-5 md:px-10">
@@ -74,17 +74,17 @@ export default function ReviewsSection({ reviews = [], onSubmitted }) {
           </div>
         ) : (
           !showForm && (
-            <Reveal delay={0.1} className="mt-8 md:mt-14 flex justify-center">
-              <div className="max-w-md w-full text-center border border-sand/15 px-6 py-8 md:px-10 md:py-12">
-                <MessageSquarePlus className="text-accent mx-auto" size={28} />
-                <p className="mt-4 font-display text-xl">Aucun avis pour l'instant</p>
+            <Reveal delay={0.1} className="mt-6 md:mt-14 flex justify-center">
+              <div className="max-w-md w-full text-center border border-sand/15 px-5 py-5 md:px-10 md:py-12">
+                <MessageSquarePlus className="text-accent mx-auto" size={24} />
+                <p className="mt-3 font-display text-lg md:text-xl">Aucun avis pour l'instant</p>
                 <p className="mt-2 text-sm text-sand/50 leading-relaxed">
                   Soyez le premier à partager votre expérience avec UNIWÊ et à aider les futurs
                   clients à se décider.
                 </p>
                 <button
                   onClick={() => setShowForm(true)}
-                  className="mt-6 rounded-full bg-sand text-ink hover:bg-white hover:scale-[1.03] active:scale-[0.97] transition-all px-6 py-3 text-sm font-medium"
+                  className="mt-5 rounded-full bg-sand text-ink hover:bg-white hover:scale-[1.03] active:scale-[0.97] transition-all px-6 py-2.5 text-sm font-medium"
                 >
                   Donner mon avis
                 </button>

@@ -49,7 +49,7 @@ export default function CommunityModal({ open, onClose, whatsappCommunityLink })
                 rel="noreferrer"
                 className="flex items-center justify-center gap-2 w-full rounded-full bg-ink text-sand hover:bg-accent hover:scale-[1.03] active:scale-[0.97] transition-all px-6 py-4 text-sm font-medium"
               >
-                <WhatsAppIcon size={17} /> Rejoindre le groupe WhatsApp
+                <WhatsAppIcon size={17} className="text-[#25D366]" /> Rejoindre le groupe WhatsApp
               </a>
             ) : (
               <p className="text-sm text-ink/40 text-center border border-ink/10 rounded-none py-4">

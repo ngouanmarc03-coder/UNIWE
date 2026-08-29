@@ -38,10 +38,12 @@ export default function FloatingCommunityButton() {
         whileTap={{ scale: 0.96 }}
         title="Glissez pour déplacer, cliquez pour ouvrir"
         aria-label="Rejoindre la communauté"
-        className="fixed bottom-6 right-6 z-40 pointer-events-auto flex items-center gap-2.5 rounded-full bg-sand text-ink pl-4 pr-5 py-3 shadow-[0_6px_20px_rgba(0,0,0,0.18)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.24)] hover:scale-[1.03] active:scale-[0.97] transition-all cursor-grab active:cursor-grabbing select-none"
+        className="group fixed bottom-6 right-6 z-40 pointer-events-auto flex items-center gap-2.5 rounded-full bg-sand text-ink pl-4 pr-5 py-3 hover:pr-4 shadow-[0_6px_20px_rgba(0,0,0,0.18)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.24)] hover:scale-[1.03] active:scale-[0.97] transition-all cursor-grab active:cursor-grabbing select-none"
       >
-        <WhatsAppIcon size={18} className="text-accent" />
-        <span className="text-sm font-medium whitespace-nowrap">Communauté</span>
+        <WhatsAppIcon size={18} className="text-[#25D366] shrink-0" />
+        <span className="text-sm font-medium whitespace-nowrap max-w-[120px] group-hover:max-w-0 group-hover:opacity-0 overflow-hidden transition-all duration-300">
+          Communauté
+        </span>
       </motion.button>
 
       <CommunityModal open={open} onClose={() => setOpen(false)} whatsappCommunityLink={link} />

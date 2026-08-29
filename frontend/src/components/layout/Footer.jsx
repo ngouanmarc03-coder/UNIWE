@@ -60,17 +60,15 @@ export default function Footer({ settings, sponsors = [] }) {
             {settings?.tagline || "Import-export entre l'Afrique et l'Europe"}
           </p>
           <div className="flex gap-2.5 mt-5">
-            {settings?.socialLinks?.facebook && (
-              <a
-                href={settings.socialLinks.facebook}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-                className="flex items-center justify-center h-8 w-8 rounded-full border border-sand/15 text-sand/70 hover:text-accent-light hover:border-accent-light transition-colors"
-              >
-                <Facebook size={15} />
-              </a>
-            )}
+            <a
+              href={settings?.socialLinks?.facebook || "#"}
+              target={settings?.socialLinks?.facebook ? "_blank" : undefined}
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="flex items-center justify-center h-8 w-8 rounded-full border border-sand/15 text-sand/70 hover:text-accent-light hover:border-accent-light transition-colors"
+            >
+              <Facebook size={15} />
+            </a>
             {settings?.socialLinks?.instagram && (
               <a
                 href={settings.socialLinks.instagram}
@@ -82,17 +80,15 @@ export default function Footer({ settings, sponsors = [] }) {
                 <Instagram size={15} />
               </a>
             )}
-            {settings?.socialLinks?.tiktok && (
-              <a
-                href={settings.socialLinks.tiktok}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="TikTok"
-                className="flex items-center justify-center h-8 w-8 rounded-full border border-sand/15 text-sand/70 hover:text-accent-light hover:border-accent-light transition-colors"
-              >
-                <TikTokIcon size={14} />
-              </a>
-            )}
+            <a
+              href={settings?.socialLinks?.tiktok || "#"}
+              target={settings?.socialLinks?.tiktok ? "_blank" : undefined}
+              rel="noreferrer"
+              aria-label="TikTok"
+              className="flex items-center justify-center h-8 w-8 rounded-full border border-sand/15 text-sand/70 hover:text-accent-light hover:border-accent-light transition-colors"
+            >
+              <TikTokIcon size={14} />
+            </a>
             {settings?.socialLinks?.linkedin && (
               <a
                 href={settings.socialLinks.linkedin}
@@ -133,9 +129,9 @@ export default function Footer({ settings, sponsors = [] }) {
               href={settings.whatsappCommunityLink}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-sand/70 hover:text-accent"
+              className="inline-flex items-center gap-2 text-sm text-sand/70 hover:text-[#25D366]"
             >
-              <WhatsAppIcon size={15} /> Rejoindre le groupe WhatsApp
+              <WhatsAppIcon size={15} className="text-[#25D366]" /> Rejoindre le groupe WhatsApp
             </a>
           ) : (
             <p className="text-sm text-sand/40">Bientôt disponible</p>
@@ -181,25 +177,27 @@ export default function Footer({ settings, sponsors = [] }) {
         </div>
       </div>
 
-      <div className="relative border-t border-sand/10 py-6 px-5 md:px-10 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-        <p className="text-xs text-sand/40">
-          © {new Date().getFullYear()} {siteName}. Tous droits réservés.
-        </p>
-        <button
-          onClick={handleSecretClick}
-          aria-hidden="true"
-          tabIndex={-1}
-          className="text-sand/40 select-none cursor-default text-xs leading-none px-1"
-        >
-          ·
-        </button>
-        <p className="text-xs text-sand/40">
-          — Créateur :{" "}
+      <div className="relative border-t border-sand/10 py-6 px-5 md:px-10 flex flex-col items-center gap-2 text-center">
+        <div className="flex items-center gap-1">
+          <p className="text-xs text-sand/40">
+            © {new Date().getFullYear()} {siteName}. Tous droits réservés.
+          </p>
+          <button
+            onClick={handleSecretClick}
+            aria-hidden="true"
+            tabIndex={-1}
+            className="text-sand/40 select-none cursor-default text-xs leading-none px-1"
+          >
+            ·
+          </button>
+        </div>
+        <p className="text-[11px] tracking-wide text-sand/30">
+          Conçu par{" "}
           <a
             href="https://marcngouan.netlify.app/portfolio"
             target="_blank"
             rel="noreferrer"
-            className="text-sand/60 hover:text-accent-light transition-colors"
+            className="text-sand/50 hover:text-accent-light transition-colors"
           >
             Ngouan Marc
           </a>

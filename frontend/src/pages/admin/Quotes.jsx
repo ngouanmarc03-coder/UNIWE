@@ -51,7 +51,7 @@ export default function Quotes() {
               <div>
                 <div className="flex items-center gap-2">
                   {q.channel === "whatsapp" ? (
-                    <WhatsAppIcon size={15} className="text-accent" />
+                    <WhatsAppIcon size={15} className="text-[#25D366]" />
                   ) : (
                     <Globe size={16} className="text-accent" />
                   )}
