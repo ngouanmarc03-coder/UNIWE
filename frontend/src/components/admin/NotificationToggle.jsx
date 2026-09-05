@@ -12,6 +12,7 @@ function urlBase64ToUint8Array(base64String) {
 export default function NotificationToggle() {
   const [status, setStatus] = useState("checking"); // checking | unsupported | denied | off | on
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     async function check() {
@@ -27,11 +28,15 @@ export default function NotificationToggle() {
       const sub = await reg.pushManager.getSubscription();
       setStatus(sub ? "on" : "off");
     }
-    check().catch(() => setStatus("unsupported"));
+    check().catch((err) => {
+      setStatus("off");
+      setError(err?.message || "Erreur inconnue au chargement");
+    });
   }, []);
 
   async function enable() {
     setBusy(true);
+    setError("");
     try {
       const permission = await Notification.requestPermission();
       if (permission !== "granted") {
@@ -39,6 +44,9 @@ export default function NotificationToggle() {
         return;
       }
       const { data } = await api.get("/admin/push/public-key");
+      if (!data.publicKey) {
+        throw new Error("Clé VAPID absente côté serveur (variables Railway manquantes ?)");
+      }
       const reg = await navigator.serviceWorker.ready;
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
@@ -46,8 +54,9 @@ export default function NotificationToggle() {
       });
       await api.post("/admin/push/subscribe", sub.toJSON());
       setStatus("on");
-    } catch {
+    } catch (err) {
       setStatus("off");
+      setError(err?.response?.data?.message || err?.message || "Échec de l'activation");
     } finally {
       setBusy(false);
     }
@@ -55,6 +64,7 @@ export default function NotificationToggle() {
 
   async function disable() {
     setBusy(true);
+    setError("");
     try {
       const reg = await navigator.serviceWorker.ready;
       const sub = await reg.pushManager.getSubscription();
@@ -63,12 +73,20 @@ export default function NotificationToggle() {
         await sub.unsubscribe();
       }
       setStatus("off");
+    } catch (err) {
+      setError(err?.message || "Échec de la désactivation");
     } finally {
       setBusy(false);
     }
   }
 
-  if (status === "unsupported") return null;
+  if (status === "unsupported") {
+    return (
+      <p className="flex items-center gap-3 px-4 py-3 text-xs text-sand/40">
+        <BellOff size={16} /> Notifications non supportées sur ce navigateur
+      </p>
+    );
+  }
 
   if (status === "denied") {
     return (
@@ -78,16 +96,25 @@ export default function NotificationToggle() {
     );
   }
 
-  if (status === "checking") return null;
+  if (status === "checking") {
+    return (
+      <p className="flex items-center gap-3 px-4 py-3 text-xs text-sand/30">
+        <Bell size={16} /> Vérification...
+      </p>
+    );
+  }
 
   return (
-    <button
-      onClick={status === "on" ? disable : enable}
-      disabled={busy}
-      className="flex items-center gap-3 rounded-none px-4 py-3 text-sm text-sand/60 hover:bg-sand/10 disabled:opacity-50"
-    >
-      {status === "on" ? <BellRing size={18} className="text-accent-light" /> : <Bell size={18} />}
-      {status === "on" ? "Notifications activées" : "Activer les notifications"}
-    </button>
+    <div>
+      <button
+        onClick={status === "on" ? disable : enable}
+        disabled={busy}
+        className="flex items-center gap-3 rounded-none px-4 py-3 text-sm text-sand/60 hover:bg-sand/10 disabled:opacity-50 w-full text-left"
+      >
+        {status === "on" ? <BellRing size={18} className="text-accent-light" /> : <Bell size={18} />}
+        {busy ? "Chargement..." : status === "on" ? "Notifications activées" : "Activer les notifications"}
+      </button>
+      {error && <p className="px-4 pb-2 text-xs text-red-400 break-words">{error}</p>}
+    </div>
   );
 }
