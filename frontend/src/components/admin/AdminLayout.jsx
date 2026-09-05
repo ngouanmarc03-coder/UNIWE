@@ -17,6 +17,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext.jsx";
+import NotificationToggle from "./NotificationToggle.jsx";
 
 const NAV = [
   { to: "/admin", label: "Tableau de bord", icon: LayoutDashboard, end: true },
@@ -74,6 +75,7 @@ export default function AdminLayout() {
           ))}
         </nav>
 
+        <NotificationToggle />
         <a
           href="/"
           target="_blank"
