@@ -15,7 +15,7 @@ const POINTS = [
   {
     icon: Globe2,
     title: "Une vision qui s'élargit",
-    text: "Aujourd'hui entre l'Afrique et la France, demain vers d'autres pays — UNIWÊ grandit avec ses clients.",
+    text: "Aujourd'hui entre l'Afrique et la France, demain vers d'autres pays. UNIWÊ grandit avec ses clients.",
   },
 ];
 

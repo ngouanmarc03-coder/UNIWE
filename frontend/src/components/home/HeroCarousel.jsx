@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, ArrowRight } from "lucide-react";
-import CountUpValue from "./CountUpValue.jsx";
+import { ChevronDown, ArrowRight, Truck, Globe2, ShieldCheck } from "lucide-react";
 
-export default function HeroCarousel({ slides = [], stats = [], onQuoteClick }) {
+const AXES_REMINDER = [
+  { slug: "transport-leger", icon: Truck, label: "Transport léger" },
+  { slug: "fret-international", icon: Globe2, label: "Fret Afrique-Europe" },
+  { slug: "accompagnement", icon: ShieldCheck, label: "Suivi personnalisé" },
+];
+
+export default function HeroCarousel({ slides = [], onQuoteClick }) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -28,7 +34,7 @@ export default function HeroCarousel({ slides = [], stats = [], onQuoteClick }) 
   return (
     <section
       id="accueil"
-      className="relative h-[46vh] md:h-[74vh] min-h-[360px] md:min-h-[580px] max-h-[720px] overflow-hidden bg-ink"
+      className="relative h-[46vh] md:h-[64vh] min-h-[360px] md:min-h-[500px] max-h-[640px] overflow-hidden bg-ink"
     >
       <AnimatePresence mode="sync">
         <motion.div
@@ -109,24 +115,24 @@ export default function HeroCarousel({ slides = [], stats = [], onQuoteClick }) 
         </div>
       </div>
 
-      {stats.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.7 }}
-          className="hidden md:flex absolute right-5 md:right-10 top-1/2 -translate-y-1/2 z-10 flex-col gap-4 bg-ink/60 backdrop-blur-md border border-sand/10 rounded-2xl px-6 py-6 shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
-        >
-          {stats.slice(0, 3).map((s, i) => (
-            <div key={`${s.label}-${i}`}>
-              <CountUpValue
-                value={s.value}
-                className="font-display text-2xl text-accent-light"
-              />
-              <p className="text-xs text-sand/60 mt-0.5 whitespace-nowrap">{s.label}</p>
-            </div>
-          ))}
-        </motion.div>
-      )}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 0.7 }}
+        className="hidden md:flex absolute right-5 md:right-10 top-1/2 -translate-y-1/2 z-10 flex-col gap-3.5 bg-ink/55 backdrop-blur-md border border-sand/10 rounded-2xl px-6 py-6 shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
+      >
+        <p className="text-[10px] uppercase tracking-[0.2em] text-sand/40 mb-1">Nos services</p>
+        {AXES_REMINDER.map((axe) => (
+          <Link
+            key={axe.slug}
+            to={`/services#${axe.slug}`}
+            className="group flex items-center gap-3 text-sand/80 hover:text-accent-light transition-colors"
+          >
+            <axe.icon size={16} className="shrink-0" />
+            <span className="text-sm whitespace-nowrap">{axe.label}</span>
+          </Link>
+        ))}
+      </motion.div>
 
       {slides.length > 1 && (
         <div className="absolute bottom-6 left-5 md:left-10 flex gap-2 z-10">

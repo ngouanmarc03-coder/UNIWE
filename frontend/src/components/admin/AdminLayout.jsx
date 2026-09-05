@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   GalleryHorizontal,
+  Images,
   MapPin,
   FileText,
   Star,
@@ -20,6 +21,7 @@ import { useAuth } from "../../context/AuthContext.jsx";
 const NAV = [
   { to: "/admin", label: "Tableau de bord", icon: LayoutDashboard, end: true },
   { to: "/admin/heroes", label: "Heros (accueil)", icon: GalleryHorizontal },
+  { to: "/admin/gallery", label: "Notre activité en images", icon: Images },
   { to: "/admin/locations", label: "Localisations", icon: MapPin },
   { to: "/admin/quotes", label: "Demandes de devis", icon: FileText },
   { to: "/admin/reviews", label: "Avis clients", icon: Star },

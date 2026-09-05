@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Landmark } from "lucide-react";
 import TikTokIcon from "../icons/TikTokIcon.jsx";
 import WhatsAppIcon from "../icons/WhatsAppIcon.jsx";
 
@@ -154,6 +154,17 @@ export default function Footer({ settings, sponsors = [] }) {
             <li>
               <a href="/confidentialite" className="hover:text-accent">
                 Politique de confidentialité
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://annuaire-entreprises.data.gouv.fr/entreprise/uniwe-103166641"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-accent"
+              >
+                <span aria-hidden="true">🇫🇷</span>
+                <Landmark size={13} /> Fiche officielle (SIREN)
               </a>
             </li>
           </ul>

@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Quote from "./pages/Quote.jsx";
+import Services from "./pages/Services.jsx";
+import GalleryIndex from "./pages/GalleryIndex.jsx";
+import GalleryDetail from "./pages/GalleryDetail.jsx";
 import HowItWorks from "./pages/HowItWorks.jsx";
 import FloatingCommunityButton from "./components/community/FloatingCommunityButton.jsx";
 import MentionsLegales from "./pages/legal/MentionsLegales.jsx";
@@ -12,6 +15,7 @@ import ProtectedRoute from "./components/admin/ProtectedRoute.jsx";
 import AdminLayout from "./components/admin/AdminLayout.jsx";
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import Heroes from "./pages/admin/Heroes.jsx";
+import Gallery from "./pages/admin/Gallery.jsx";
 import Locations from "./pages/admin/Locations.jsx";
 import Quotes from "./pages/admin/Quotes.jsx";
 import Reviews from "./pages/admin/Reviews.jsx";
@@ -38,6 +42,9 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/devis" element={<Quote />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/galerie" element={<GalleryIndex />} />
+      <Route path="/galerie/:slug" element={<GalleryDetail />} />
       <Route path="/comment-ca-marche" element={<HowItWorks />} />
       <Route path="/mentions-legales" element={<MentionsLegales />} />
       <Route path="/cgu" element={<CGU />} />
@@ -54,6 +61,7 @@ export default function App() {
       >
         <Route index element={<Dashboard />} />
         <Route path="heroes" element={<Heroes />} />
+        <Route path="gallery" element={<Gallery />} />
         <Route path="locations" element={<Locations />} />
         <Route path="quotes" element={<Quotes />} />
         <Route path="reviews" element={<Reviews />} />
