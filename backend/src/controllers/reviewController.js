@@ -1,5 +1,4 @@
 import Review from "../models/Review.js";
-import { notifyAdmins } from "../utils/push.js";
 
 export async function createReview(req, res) {
   const { name, company, rating, comment } = req.body;
@@ -14,11 +13,6 @@ export async function createReview(req, res) {
     comment,
     status: "pending",
   });
-
-  notifyAdmins({
-    title: "Nouvel avis client",
-    body: "Un nouvel avis vient d'être soumis, en attente de validation.",
-  }).catch(() => {});
 
   res.status(201).json(review);
 }

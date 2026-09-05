@@ -11,7 +11,6 @@ import { publicQuoteRouter, adminQuoteRouter } from "./routes/quoteRoutes.js";
 import { publicReviewRouter, adminReviewRouter } from "./routes/reviewRoutes.js";
 import { publicSettingsRouter, adminSettingsRouter } from "./routes/settingsRoutes.js";
 import { publicGalleryRouter, adminGalleryRouter } from "./routes/galleryRoutes.js";
-import pushRoutes from "./routes/pushRoutes.js";
 
 import heroController from "./controllers/heroController.js";
 import locationController from "./controllers/locationController.js";
@@ -69,7 +68,6 @@ app.use("/api/admin/gallery", adminGalleryRouter);
 app.use("/api/admin/quotes", adminQuoteRouter);
 app.use("/api/admin/reviews", adminReviewRouter);
 app.use("/api/admin/settings", adminSettingsRouter);
-app.use("/api/admin/push", pushRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

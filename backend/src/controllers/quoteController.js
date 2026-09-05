@@ -1,6 +1,5 @@
 import QuoteRequest from "../models/QuoteRequest.js";
 import { uploadBufferToCloudinary } from "../utils/uploadBuffer.js";
-import { notifyAdmins } from "../utils/push.js";
 
 export async function createQuote(req, res) {
   const { name, phone, email, company, goodsType, origin, destination, details, channel } = req.body;
@@ -30,11 +29,6 @@ export async function createQuote(req, res) {
     photoUrl,
     channel: channel === "whatsapp" ? "whatsapp" : "site",
   });
-
-  notifyAdmins({
-    title: "Nouvelle demande de devis",
-    body: "Une nouvelle demande vient d'arriver sur le site.",
-  }).catch(() => {});
 
   res.status(201).json(quote);
 }
